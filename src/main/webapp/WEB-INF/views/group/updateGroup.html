@@ -2,9 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>update group</title>
 </head>
 <body>
-$END$
+<div style = "text-align: center">
+  <form th:action="@{/groups/{id}(id=${updateGroup.id})}"
+        th:method="patch"
+        th:object="${updateGroup}">
+
+    <input th:text="text" th:field="*{groupName}" placeholder="group name">
+    <br>
+    <br>
+    <input th:text="text" th:field="*{dateOfStart}" placeholder="start date">
+    <br>
+    <br>
+    <input th:text="text" th:field="*{dateOfFinish}" placeholder="finish date">
+    <br>
+    <br>
+    <input type="submit" value="update">
+  </form>
+
+</div>
 </body>
 </html>

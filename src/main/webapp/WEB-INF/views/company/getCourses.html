@@ -2,9 +2,63 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Title</title>
 </head>
+<style>
+  table{
+    width: 300px;
+    border: 1px solid greenyellow;
+    margin: auto;
+  }
+  td {
+    text-align: center;
+  }
+  table, th, td {
+    border: 1px solid black;
+    padding: 3px;
+  }
+</style>
 <body>
-$END$
+<div class="search">
+  <form th:action="@{search}"
+        th:method="get"
+        style="text-align: center; margin-top: 100px; font-size: 25px;">
+    <input type="text"name="name" placeholder="search">
+    <br>
+    <br>
+    <input type="submit" value="search">
+  </form>
+</div>
+<table style="width: 60%">
+  <tr>
+    <td>#</td>
+    <td>name</td>
+    <td>duration month</td>
+    <td>update</td>
+    <td>delete</td>
+  </tr>
+  <tr th:each="course:${courses}">
+    <td th:text="${course.id}"></td>
+    <td th:text="${course.courseName}"></td>
+    <td th:text="${course.durationMonth}"></td>
+    <td>
+      <a th:href="@{/courses/update/{id}(id=${course.id})}">
+        <button style="height: auto; background-color: blue">update</button>
+      </a>
+    </td>
+    <td>
+      <form th:method="Delete" th:action="@{/courses/delete(id=${course.id})}">
+        <button type="submit" style="height: auto; background-color: grey">delete</button>
+      </form>
+    </td>
+  </tr>
+</table>
+<br>
+<br>
+<!--<form>-->
+<!--  <input style=" display: block; margin:auto; font-size:15px;"class="b1" type="button" value="Add Company"-->
+<!--         onclick="window.location.href = 'courses/addCourse'">-->
+<!--</form>-->
+
 </body>
 </html>

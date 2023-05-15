@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>add company</title>
 </head>
 <body>
-$END$
+<div style = "text-align: center; margin-top: 200px; font-size: 30px;">
+  <form th:action="@{saveCompany}"
+        th:method="post"
+        th:object="${company}">
+
+    <input th:text="text" th:field="*{companyName}" placeholder="company name">
+    <br>
+    <br>
+    <input th:text="text" th:field="*{locatedCountry}" placeholder="located country">
+    <br>
+    <br>
+    <input type="submit" value="add company">
+  </form>
+
+</div>
 </body>
 </html>

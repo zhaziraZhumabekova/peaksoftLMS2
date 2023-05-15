@@ -1,10 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
+<style>
+    table{
+        width: 300px;
+        border: 1px solid greenyellow;
+        margin: auto;
+    }
+    td {
+        text-align: center;
+    }
+    table, th, td {
+        border: 1px solid black;
+        padding: 3px;
+    }
+</style>
 <body>
-$END$
+<table style="width: 60%">
+    <tr>
+        <td>#</td>
+        <td>Company name</td>
+        <td>Located country</td>
+        <td>Course</td>
+        <td>update</td>
+        <td>delete</td>
+    </tr>
+    <tr th:each="company:${companies}">
+        <td th:text="${company.id}"></td>
+        <td th:text="${company.companyName}"></td>
+        <td th:text="${company.locatedCountry}"></td>
+        <td>
+            <a th:href="@{/companies/courses/{companyId}(companyId=${company.id})}">
+                <button style="height: auto; background-color: yellow">course</button>
+            </a>
+        </td>
+        <td>
+            <a th:href="@{/companies/update/{id}(id=${company.id})}">
+                <button style="height: auto; background-color: blue">update</button>
+            </a>
+        </td>
+        <td>
+            <form th:method="Delete" th:action="@{/companies/delete(id=${company.id})}">
+                <button type="submit" style="height: auto; background-color: grey">delete</button>
+            </form>
+        </td>
+    </tr>
+</table>
+<br>
+<br>
+<form>
+    <input style=" display: block; margin:auto; font-size:15px;"class="b1" type="button" value="Add Company"
+           onclick="window.location.href = 'companies/addCompany'">
+</form>
+<br>
+<br>
+<form>
+    <input style=" display: block; margin:auto; font-size:15px;"class="b1" type="button" value="searchCourse"
+           onclick="window.location.href = 'courses/search'">
+</form>
 </body>
 </html>

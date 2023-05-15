@@ -1,2 +1,6 @@
-package peaksoft.entities;public class StudyFormat {
+package peaksoft.entities;
+
+public enum StudyFormat {
+    ONLINE,
+    OFFLINE
 }

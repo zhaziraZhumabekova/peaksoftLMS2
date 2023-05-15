@@ -5,6 +5,26 @@
     <title>add course</title>
 </head>
 <body>
+<div style = "text-align: center; margin-top: 200px; font-size: 30px;">
+    <form th:action="@{/courses/saveCourse}"
+          th:method="post"
+          th:object="${course}">
 
+        <input type="text" th:field="*{courseName}" placeholder="course name">
+        <br>
+        <br>
+        <input type="text" th:field="*{durationMonth}" placeholder="duration month">
+        <br>
+        <br>
+        <select th:field="*{companyId}">
+            <option th:each="company:${companyList}"
+            th:value="${company.id}"
+            th:text="${company.companyName}">
+            </option>
+        </select>
+        <input type="submit" value="add course">
+    </form>
+
+</div>
 </body>
 </html>

@@ -2,9 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Title</title>
 </head>
+<style>
+  table{
+    width: 300px;
+    border: 1px solid greenyellow;
+    margin: auto;
+  }
+  td {
+    text-align: center;
+  }
+  table, th, td {
+    border: 1px solid black;
+    padding: 3px;
+  }
+</style>
 <body>
-$END$
+<h3>count</h3>
+<h3 th:name="count" th:text="${count}"></h3>
+<table style="width: 60%">
+  <tr>
+    <td>#</td>
+    <td>name</td>
+    <td>duration month</td>
+    <td>update</td>
+    <td>delete</td>
+  </tr>
+  <tr th:each="course:${courseList}">
+    <td th:text="${course.id}"></td>
+    <td th:text="${course.courseName}"></td>
+    <td th:text="${course.durationMonth}"></td>
+    <td>
+      <a th:href="@{/courses/update/{id}(id=${course.id})}">
+        <button style="height: auto; background-color: blue">update</button>
+      </a>
+    </td>
+    <td>
+      <form th:method="Delete" th:action="@{/courses/delete(id=${course.id})}">
+        <button type="submit" style="height: auto; background-color: grey">delete</button>
+      </form>
+    </td>
+  </tr>
+</table>
+<br>
+<br>
+<!--<form>-->
+<!--  <input style=" display: block; margin:auto; font-size:15px;"class="b1" type="button" value="Add Company"-->
+<!--         onclick="window.location.href = 'courses/addCourse'">-->
+<!--</form>-->
 </body>
 </html>

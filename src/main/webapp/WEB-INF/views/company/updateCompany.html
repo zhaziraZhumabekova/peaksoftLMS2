@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>update company</title>
 </head>
 <body>
-$END$
+<div style = "text-align: center">
+    <form th:action="@{/companies/{id}(id=${updateCompany.id})}"
+          th:method="patch"
+          th:object="${updateCompany}">
+
+        <input th:text="text" th:field="*{companyName}" placeholder="company name">
+        <br>
+        <br>
+        <input th:text="text" th:field="*{locatedCountry}" placeholder="located country">
+        <br>
+        <br>
+        <input type="submit" value="update">
+    </form>
+
+</div>
 </body>
 </html>

@@ -1,10 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
+<style>
+    table{
+        width: 300px;
+        border: 1px solid greenyellow;
+        margin: auto;
+    }
+    td {
+        text-align: center;
+    }
+    table, th, td {
+        border: 1px solid black;
+        padding: 3px;
+    }
+</style>
 <body>
-$END$
+<table style="width: 60%">
+    <tr>
+        <td>#</td>
+        <td>name</td>
+        <td>date of start</td>
+        <td>date of finish</td>
+        <td>update</td>
+        <td>delete</td>
+    </tr>
+    <tr th:each="group:${groups}">
+        <td th:text="${group.id}"></td>
+        <td th:text="${group.groupName}"></td>
+        <td th:text="${group.dateOfStart}"></td>
+        <td th:text="${group.dateOfFinish}"></td>
+        <td>
+            <a th:href="@{/groups/update/{id}(id=${group.id})}">
+                <button style="height: auto; background-color: forestgreen">update</button>
+            </a>
+        </td>
+        <td>
+            <form th:method="Delete" th:action="@{/groups/delete(id=${group.id})}">
+                <button type="submit" style="height: auto; background-color: lightslategrey">delete</button>
+            </form>
+        </td>
+    </tr>
+</table>
+<br>
+<br>
+<form>
+    <input style=" display: block; margin:auto; font-size:15px;"class="b1" type="button" value="Add Company"
+           onclick="window.location.href = 'groups/addGroup'">
+</form>
 </body>
 </html>
